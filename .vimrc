@@ -61,6 +61,22 @@ set foldnestmax=10
 " Fold by indenation
 set foldmethod=indent
 
+" vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+    Plug 'sheerun/vim-polyglot'
+    Plug 'valloric/youcompleteme'
+    Plug 'tpope/vim-fugitive'
+    Plug 'shumphrey/fugitive-gitlab.vim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'scrooloose/syntastic'
+    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+call plug#end()
+
 if &t_Co == 256
 " Use Kim Silkebaekken's distinguished color scheme
 " https://github.com/Lokaltog/vim-distinguished
